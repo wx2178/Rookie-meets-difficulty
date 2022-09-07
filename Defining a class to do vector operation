@@ -16,7 +16,7 @@ class Vector:
         output=[0]*len(self)
         for i in range(len(self)):
             output[i]=self.a[i]+other[i]
-        return output
+        return Vector(output)
     def __sub__(self, other):
         if len(self)>len(other):
             other.a.append(0*(len(self)-len(other)))
@@ -25,10 +25,10 @@ class Vector:
         output=[0]*len(self)
         for i in range(len(self)):
             output[i]=self.a[i]-other[i]
-        return output
+        return Vector(output)
     def __str__(self):
-        return '<'+ str(self.a[0:])+'>'
+        return '<'+ str(self.a)[1:-1]+'>'
 if __name__=='__main__':
     v=Vector([1,2,3])
     w=Vector([3,4])
-    print(v+w) # get [4,6,3]
+    print((v+w)-w) # get <1,2,3>
